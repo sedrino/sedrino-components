@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
 import { $getComponents } from "@/server/functions/components";
 
@@ -28,18 +29,24 @@ function RouteComponent() {
     queryFn: () => $getComponents(),
   });
 
-  const handleCopyAll = () => {
-    if (!components.data?.length) return;
+  const [packageManager, setPackageManager] = React.useState<
+    "pnpm" | "npm" | "yarn" | "bun"
+  >("pnpm");
 
-    const allCommands = components.data
-      .map(
-        (item) =>
-          `pnpm dlx shadcn@latest add ${REGISTRY_URL}/r/${item.name}.json`,
-      )
-      .join("\n");
+  const getInstallCommand = (name: string) => {
+    const commands = {
+      pnpm: `pnpm dlx shadcn@latest add ${REGISTRY_URL}/r/${name}.json`,
+      npm: `npx shadcn@latest add ${REGISTRY_URL}/r/${name}.json`,
+      yarn: `yarn dlx shadcn@latest add ${REGISTRY_URL}/r/${name}.json`,
+      bun: `bunx --bun shadcn@latest add ${REGISTRY_URL}/r/${name}.json`,
+    };
+    return commands[packageManager];
+  };
 
-    navigator.clipboard.writeText(allCommands);
-    toast.success("All install commands copied to clipboard");
+  const handleCopyHookCommand = () => {
+    const hookCommand = getInstallCommand("hooks-use-app-form");
+    navigator.clipboard.writeText(hookCommand);
+    toast.success("Install command copied to clipboard");
   };
 
   return (
@@ -52,17 +59,68 @@ function RouteComponent() {
           A registry of high-quality components for TanStack, Tailwind CSS, and
           shadcn/ui by Sedrino Labs, Inc.
         </p>
-        {components.data?.length && components.data.length > 0 && (
-          <Button
-            variant="outline"
-            size="sm"
-            className="mt-1 flex items-center gap-2 transition-colors hover:bg-primary/5"
-            onClick={handleCopyAll}
-          >
-            <ClipboardCopy className="h-4 w-4" />
-            Copy All Install Commands
-          </Button>
-        )}
+        <div className="mt-4 rounded-lg border bg-card p-4 shadow-sm">
+          <p className="mb-2 text-sm">
+            <strong>Pro Tip:</strong> The{" "}
+            <code className="rounded bg-muted px-1 py-0.5 text-xs">
+              hooks-use-app-form
+            </code>{" "}
+            includes all form components as dependencies. Install it to get
+            everything at once:
+          </p>
+          <div className="flex flex-col gap-2">
+            <Tabs
+              value={packageManager}
+              onValueChange={(value) =>
+                setPackageManager(value as typeof packageManager)
+              }
+              className="w-full"
+            >
+              <div className="flex items-center justify-between border-b border-muted bg-muted/20 px-3 py-1">
+                <TabsList className="h-8 bg-transparent">
+                  <TabsTrigger
+                    value="pnpm"
+                    className="rounded-none border-b-2 border-transparent bg-transparent px-3 py-1.5 font-mono text-sm data-[state=active]:border-b-primary data-[state=active]:bg-transparent"
+                  >
+                    pnpm
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="npm"
+                    className="rounded-none border-b-2 border-transparent bg-transparent px-3 py-1.5 font-mono text-sm data-[state=active]:border-b-primary data-[state=active]:bg-transparent"
+                  >
+                    npm
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="yarn"
+                    className="rounded-none border-b-2 border-transparent bg-transparent px-3 py-1.5 font-mono text-sm data-[state=active]:border-b-primary data-[state=active]:bg-transparent"
+                  >
+                    yarn
+                  </TabsTrigger>
+                  <TabsTrigger
+                    value="bun"
+                    className="rounded-none border-b-2 border-transparent bg-transparent px-3 py-1.5 font-mono text-sm data-[state=active]:border-b-primary data-[state=active]:bg-transparent"
+                  >
+                    bun
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+              <div className="mt-3 flex items-center gap-3">
+                <code className="flex-1 overflow-x-auto rounded-lg bg-muted/50 px-4 py-3 font-mono text-sm">
+                  {getInstallCommand("hooks-use-app-form")}
+                </code>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex flex-shrink-0 items-center gap-2 transition-colors hover:bg-primary/5"
+                  onClick={handleCopyHookCommand}
+                >
+                  <ClipboardCopy className="h-4 w-4" />
+                  Copy
+                </Button>
+              </div>
+            </Tabs>
+          </div>
+        </div>
       </div>
 
       <div className="rounded-lg border bg-card p-6 shadow-sm">
@@ -108,6 +166,8 @@ function RouteComponent() {
             key={item.name}
             name={item.name}
             description={item.description}
+            packageManager={packageManager}
+            getInstallCommand={getInstallCommand}
           />
         ))}
       </div>
@@ -150,11 +210,15 @@ function ComponentCard({
 function RegistryItem({
   name,
   description,
+  packageManager,
+  getInstallCommand,
 }: {
   name: string;
   description: string;
+  packageManager: string;
+  getInstallCommand: (name: string) => string;
 }) {
-  const installCommand = `pnpm dlx shadcn@latest add ${REGISTRY_URL}/r/${name}.json`;
+  const installCommand = getInstallCommand(name);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(installCommand);
