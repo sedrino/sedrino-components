@@ -64,6 +64,44 @@ function RouteComponent() {
           </Button>
         )}
       </div>
+
+      <div className="rounded-lg border bg-card p-6 shadow-sm">
+        <h2 className="mb-4 text-2xl font-semibold">Component Overview</h2>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-medium">Form Components</h3>
+            <p className="text-muted-foreground">
+              Our form components are organized in two key directories:
+              <code className="mx-1 rounded bg-muted px-1 py-0.5 text-xs">
+                app/components/form
+              </code>
+              contains enhanced wrappers around shadcn components with added
+              type safety (like SelectField supporting null and number values),
+              while
+              <code className="mx-1 rounded bg-muted px-1 py-0.5 text-xs">
+                app/components/form-fields
+              </code>
+              provides components specifically designed for TanStack Form
+              integration through our useAppForm hook.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium">Usage</h3>
+            <p className="text-muted-foreground">
+              All components are designed to work seamlessly with the{" "}
+              <code className="rounded bg-muted px-1 py-0.5 text-xs">
+                useAppForm
+              </code>{" "}
+              hook, which provides a consistent API for form state management,
+              validation, and submission. This two-layer approach gives you both
+              standalone form components and integrated form field components
+              that leverage TanStack Form's powerful features. Check out the
+              examples in the navigation to see them in action.
+            </p>
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-1 gap-4">
         {components.data?.map((item) => (
           <RegistryItem
