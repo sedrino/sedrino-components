@@ -3,13 +3,7 @@ import tsConfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   server: {
-    routeRules: {
-      "/___sedrino_agent/**": {
-        proxy: {
-          to: "http://localhost:9016/**",
-        },
-      },
-    },
+    preset: 'vercel',
   },
   vite: {
     plugins: [
