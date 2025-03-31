@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "validation-error",
+  "type": "registry:component",
+  "description": "A form field validation error component.",
+  "files": [
+    {
+      "path": "app/components/form-fields/validation-error.tsx",
+      "content": "import { useFieldContext } from \"@/components/form-fields/form-context\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport function ValidationError(props: {\r\n  className?: string;\r\n  maxToShow?: number | \"all\";\r\n}) {\r\n  const field = useFieldContext();\r\n  const errors = field.state.meta.errors || [];\r\n\r\n  // Determine how many errors to show\r\n  const errorsToShow =\r\n    props.maxToShow === \"all\" || !props.maxToShow\r\n      ? errors\r\n      : errors.slice(0, props.maxToShow);\r\n\r\n  return (\r\n    <div className={cn(\"text-xs text-red-500\", props.className)}>\r\n      {errorsToShow.length > 0\r\n        ? errorsToShow.map((error, index) => (\r\n            <div key={index}>\r\n              {typeof error === \"string\"\r\n                ? error\r\n                : error.message || JSON.stringify(error)}\r\n            </div>\r\n          ))\r\n        : null}\r\n      {props.maxToShow !== \"all\" &&\r\n        props.maxToShow &&\r\n        errors.length > props.maxToShow && (\r\n          <div>And {errors.length - props.maxToShow} more error(s)</div>\r\n        )}\r\n    </div>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/validation-error.tsx"
+    }
+  ]
+}

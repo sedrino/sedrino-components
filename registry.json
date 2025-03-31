@@ -1,0 +1,427 @@
+{
+    "$schema": "https://ui.shadcn.com/schema/registry.json",
+    "name": "sedrino-components",
+    "homepage": "https://registry.sedrino.com",
+    "items": [
+        {
+            "name": "use-app-form",
+            "type": "registry:hook",
+            "description": "A Tanstack Form hook.",
+            "files": [
+                {
+                    "path": "app/hooks/use-app-form.tsx",
+                    "type": "registry:hook",
+                    "target": "app/hooks/use-app-form.tsx"
+                }
+            ]
+        },
+        {
+            "name": "blocker",
+            "type": "registry:component",
+            "description": "A form blocker component for handling unsaved changes.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/blocker.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/blocker.tsx"
+                }
+            ]
+        },
+        {
+            "name": "checkbox-group",
+            "type": "registry:component",
+            "description": "A checkbox group form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/checkbox-group.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/checkbox-group.tsx"
+                }
+            ]
+        },
+        {
+            "name": "checkbox",
+            "type": "registry:component",
+            "description": "A checkbox form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/checkbox.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/checkbox.tsx"
+                }
+            ]
+        },
+        {
+            "name": "color-picker",
+            "type": "registry:component",
+            "description": "A color picker form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/color-picker.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/color-picker.tsx"
+                }
+            ]
+        },
+        {
+            "name": "currency-field",
+            "type": "registry:component",
+            "description": "A currency input form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/currency-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/currency-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "date-field",
+            "type": "registry:component",
+            "description": "A date picker form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/date-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/date-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "date-time-field",
+            "type": "registry:component",
+            "description": "A date and time picker form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/date-time-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/date-time-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "dev-helper",
+            "type": "registry:component",
+            "description": "A development helper component for forms.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/dev-helper.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/dev-helper.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-context",
+            "type": "registry:component",
+            "description": "Form context provider for form fields.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/form-context.ts",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/form-context.ts"
+                }
+            ]
+        },
+        {
+            "name": "radio-group",
+            "type": "registry:component",
+            "description": "A radio group form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/radio-group.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/radio-group.tsx"
+                }
+            ]
+        },
+        {
+            "name": "select",
+            "type": "registry:component",
+            "description": "A select form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/select.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/select.tsx"
+                }
+            ]
+        },
+        {
+            "name": "show-if",
+            "type": "registry:component",
+            "description": "A conditional rendering component for forms.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/show-if.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/show-if.tsx"
+                }
+            ]
+        },
+        {
+            "name": "slider",
+            "type": "registry:component",
+            "description": "A slider form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/slider.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/slider.tsx"
+                }
+            ]
+        },
+        {
+            "name": "submit",
+            "type": "registry:component",
+            "description": "A form submit button component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/submit.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/submit.tsx"
+                }
+            ]
+        },
+        {
+            "name": "switch",
+            "type": "registry:component",
+            "description": "A switch form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/switch.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/switch.tsx"
+                }
+            ]
+        },
+        {
+            "name": "text-area",
+            "type": "registry:component",
+            "description": "A text area form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/text-area.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/text-area.tsx"
+                }
+            ]
+        },
+        {
+            "name": "text-field",
+            "type": "registry:component",
+            "description": "A text input form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/text-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/text-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "time-field",
+            "type": "registry:component",
+            "description": "A time picker form field component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/time-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/time-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "unsaved-changes",
+            "type": "registry:component",
+            "description": "An indicator for unsaved form changes.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/unsaved-changes.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/unsaved-changes.tsx"
+                }
+            ]
+        },
+        {
+            "name": "validation-error",
+            "type": "registry:component",
+            "description": "A form field validation error component.",
+            "files": [
+                {
+                    "path": "app/components/form-fields/validation-error.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form-fields/validation-error.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-checkbox-group",
+            "type": "registry:component",
+            "description": "A standalone checkbox group component.",
+            "files": [
+                {
+                    "path": "app/components/form/checkbox-group.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/checkbox-group.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-checkbox",
+            "type": "registry:component",
+            "description": "A standalone checkbox component.",
+            "files": [
+                {
+                    "path": "app/components/form/checkbox.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/checkbox.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-color-picker",
+            "type": "registry:component",
+            "description": "A standalone color picker component.",
+            "files": [
+                {
+                    "path": "app/components/form/color-picker.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/color-picker.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-currency-field",
+            "type": "registry:component",
+            "description": "A standalone currency input component.",
+            "files": [
+                {
+                    "path": "app/components/form/currency-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/currency-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-date-field",
+            "type": "registry:component",
+            "description": "A standalone date picker component.",
+            "files": [
+                {
+                    "path": "app/components/form/date-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/date-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-date-time-field",
+            "type": "registry:component",
+            "description": "A standalone date and time picker component.",
+            "files": [
+                {
+                    "path": "app/components/form/date-time-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/date-time-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-utils",
+            "type": "registry:file",
+            "description": "Utility functions for form components.",
+            "files": [
+                {
+                    "path": "app/components/form/form-utils.ts",
+                    "type": "registry:file",
+                    "target": "app/components/form/form-utils.ts"
+                }
+            ]
+        },
+        {
+            "name": "form-radio-group",
+            "type": "registry:component",
+            "description": "A standalone radio group component.",
+            "files": [
+                {
+                    "path": "app/components/form/radio-group.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/radio-group.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-select",
+            "type": "registry:component",
+            "description": "A standalone select component.",
+            "files": [
+                {
+                    "path": "app/components/form/select.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/select.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-slider",
+            "type": "registry:component",
+            "description": "A standalone slider component.",
+            "files": [
+                {
+                    "path": "app/components/form/slider.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/slider.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-switch",
+            "type": "registry:component",
+            "description": "A standalone switch component.",
+            "files": [
+                {
+                    "path": "app/components/form/switch.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/switch.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-text-area",
+            "type": "registry:component",
+            "description": "A standalone text area component.",
+            "files": [
+                {
+                    "path": "app/components/form/text-area.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/text-area.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-text-field",
+            "type": "registry:component",
+            "description": "A standalone text input component.",
+            "files": [
+                {
+                    "path": "app/components/form/text-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/text-field.tsx"
+                }
+            ]
+        },
+        {
+            "name": "form-time-field",
+            "type": "registry:component",
+            "description": "A standalone time picker component.",
+            "files": [
+                {
+                    "path": "app/components/form/time-field.tsx",
+                    "type": "registry:component",
+                    "target": "app/components/form/time-field.tsx"
+                }
+            ]
+        }
+    ]
+}

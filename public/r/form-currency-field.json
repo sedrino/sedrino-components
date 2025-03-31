@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-currency-field",
+  "type": "registry:component",
+  "description": "A standalone currency input component.",
+  "files": [
+    {
+      "path": "app/components/form/currency-field.tsx",
+      "content": "import { HTMLAttributes, useEffect, useState } from \"react\";\nimport CurrencyInput, { CurrencyInputProps } from \"react-currency-input-field\";\nimport { cn } from \"@/lib/utils\";\n\nexport type FormCurrencyFieldProps = Omit<CurrencyInputProps, \"value\" | \"onValueChange\"> & {\n  value: number | string | null;\n  onChange: (value: number | string | null) => void;\n  onBlur?: () => void;\n  label?: string;\n  id?: string;\n  className?: string;\n  currency?: string;\n  locale?: string;\n  allowNegative?: boolean;\n  placeholder?: string;\n  disabled?: boolean;\n};\n\nexport function FormCurrencyField(props: FormCurrencyFieldProps) {\n  const [displayValue, setValue] = useState<string>(\"\");\n  \n  const {\n    value,\n    onChange,\n    onBlur,\n    id,\n    currency = \"USD\",\n    locale = \"en-US\",\n    allowNegative = false,\n    placeholder = \"0.00\",\n    disabled,\n    className,\n    ...inputProps\n  } = props;\n\n  // Keep the UI display in sync with the value\n  useEffect(() => {\n    if (value === null || value === undefined) {\n      setValue(\"\");\n    } else {\n      setValue(String(value));\n    }\n  }, [value]);\n\n  const handleValueChange = (newValue: string | undefined) => {\n    if (newValue === undefined || newValue === \"\") {\n      onChange(null);\n      return;\n    }\n    \n    // Store as string with all formatting for display purposes\n    // You can convert to number when using the value elsewhere if needed\n    onChange(newValue);\n  };\n\n  return (\n    <CurrencyInput\n      id={id}\n      className={cn(\n        \"flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50\",\n        className\n      )}\n      value={displayValue}\n      onValueChange={handleValueChange}\n      onBlur={onBlur}\n      prefix={currency === \"USD\" ? \"$ \" : \"\"}\n      suffix={currency === \"EUR\" ? \" €\" : \"\"}\n      groupSeparator={locale.startsWith(\"en\") ? \",\" : \".\"}\n      decimalSeparator={locale.startsWith(\"en\") ? \".\" : \",\"}\n      allowNegativeValue={allowNegative}\n      placeholder={placeholder}\n      disabled={disabled}\n      {...inputProps}\n    />\n  );\n}",
+      "type": "registry:component",
+      "target": "app/components/form/currency-field.tsx"
+    }
+  ]
+}

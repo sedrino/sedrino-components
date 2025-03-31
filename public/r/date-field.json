@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-field",
+  "type": "registry:component",
+  "description": "A date picker form field component.",
+  "files": [
+    {
+      "path": "app/components/form-fields/date-field.tsx",
+      "content": "import { HTMLAttributes } from \"react\";\n\nimport { useFieldContext } from \"@/components/form-fields/form-context\";\nimport {\n  DateValue,\n  FormDateField,\n  TimeValue,\n} from \"@/components/form/date-field\";\n\ntype DateFieldProps<T extends DateValue = Date> = Omit<\n  HTMLAttributes<HTMLInputElement>,\n  \"value\" | \"onChange\"\n> & {\n  id?: string;\n  label?: string;\n  disabled?: boolean;\n  className?: string;\n  min?: DateValue;\n  max?: DateValue;\n  as?: T extends Date ? \"date\" : T extends string ? \"iso\" : \"date\";\n  time?: TimeValue;\n  timezone?: string;\n  clearable?: boolean;\n  field: { state: { value: T } };\n};\n\nexport function DateField<T extends DateValue = Date>(\n  props: DateFieldProps<T>,\n) {\n  const field = useFieldContext<T>();\n  const id = props.id ?? `${field.name}`;\n\n  return (\n    <FormDateField\n      id={id}\n      value={field.state.value}\n      onChange={(value) => field.handleChange(value)}\n      onBlur={field.handleBlur}\n      label={props.label}\n      disabled={props.disabled}\n      className={props.className}\n      min={props.min}\n      max={props.max}\n      as={props.as}\n      time={props.time}\n      timezone={props.timezone}\n      clearable={props.clearable}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/date-field.tsx"
+    }
+  ]
+}

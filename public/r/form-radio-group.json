@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-radio-group",
+  "type": "registry:component",
+  "description": "A standalone radio group component.",
+  "files": [
+    {
+      "path": "app/components/form/radio-group.tsx",
+      "content": "import { RadioGroup, RadioGroupItem } from \"@/components/ui/radio-group\";\n\nimport { Label } from \"../ui/label\";\nimport { PrimitiveValueType, stringToValue, valueToString } from \"./form-utils\";\n\nexport type FormRadioGroupProps<TValue extends PrimitiveValueType> = {\n  value: TValue;\n  onChange: (value: TValue) => void;\n  className?: string;\n  defaultValue?: TValue;\n} & React.PropsWithChildren<{}>;\n\nexport function FormRadioGroup<TValue extends PrimitiveValueType>(\n  props: FormRadioGroupProps<TValue>,\n) {\n  const { value, onChange, className, defaultValue, children } = props;\n\n  // Create a mechanism to map non-string values to string for RadioGroup\n  const defaultValueString =\n    defaultValue !== undefined ? valueToString(defaultValue) : undefined;\n\n  return (\n    <RadioGroup\n      defaultValue={defaultValueString}\n      value={valueToString(value)}\n      onValueChange={(stringValue) =>\n        onChange(stringToValue(stringValue) as TValue)\n      }\n      className={className}\n    >\n      {children}\n    </RadioGroup>\n  );\n}\n\nexport type FormRadioGroupItemProps<TValue extends PrimitiveValueType> = {\n  /**\n   * The value of this radio button.\n   */\n  value: TValue;\n  label: string;\n  className?: string;\n};\n\nexport function FormRadioGroupItem<TValue extends PrimitiveValueType>(\n  props: FormRadioGroupItemProps<TValue>,\n) {\n  const { value, label, className } = props;\n\n  return (\n    <div className=\"flex items-center space-x-2\">\n      <RadioGroupItem value={valueToString(value)} className={className} />\n      <Label>{label}</Label>\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form/radio-group.tsx"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-text-area",
+  "type": "registry:component",
+  "description": "A standalone text area component.",
+  "files": [
+    {
+      "path": "app/components/form/text-area.tsx",
+      "content": "import { useEffect, useState } from \"react\";\n\nimport { Textarea } from \"@/components/ui/textarea\";\n\nexport type FormTextAreaProps = Omit<\n  React.TextareaHTMLAttributes<HTMLTextAreaElement>,\n  \"value\" | \"onChange\"\n> & {\n  value?: string | null;\n  onChange: (value: string) => void;\n  onBlur?: () => void;\n  className?: string;\n  id?: string;\n  disabled?: boolean;\n  autoFocus?: boolean;\n  rows?: number;\n  placeholder?: string;\n  onKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;\n};\n\nexport function FormTextArea(props: FormTextAreaProps) {\n  const {\n    value,\n    onChange,\n    onBlur,\n    id,\n    disabled,\n    autoFocus,\n    rows,\n    placeholder,\n    onKeyDown,\n    className,\n    ...restProps\n  } = props;\n\n  const [displayValue, setDisplayValue] = useState<string>(\"\");\n\n  /**\n   * Keep the UI display in sync with the value if something else (like a form reset)\n   * changes the value externally.\n   */\n  useEffect(() => {\n    if (value === null || value === undefined) {\n      setDisplayValue(\"\");\n      return;\n    }\n    setDisplayValue(String(value));\n  }, [value]);\n\n  /**\n   * Handle user changes to the textarea\n   */\n  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {\n    const typedValue = e.target.value;\n    onChange(typedValue);\n  };\n\n  return (\n    <Textarea\n      id={id}\n      value={displayValue}\n      onChange={handleChange}\n      onBlur={onBlur}\n      onKeyDown={onKeyDown}\n      disabled={disabled}\n      autoFocus={autoFocus}\n      rows={rows}\n      placeholder={placeholder}\n      className={className}\n      {...restProps}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form/text-area.tsx"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-slider",
+  "type": "registry:component",
+  "description": "A standalone slider component.",
+  "files": [
+    {
+      "path": "app/components/form/slider.tsx",
+      "content": "import { HTMLAttributes, useEffect, useState } from \"react\";\n\nimport { Slider } from \"@/components/ui/slider\";\nimport { cn } from \"@/lib/utils\";\n\nexport type FormSliderProps = Omit<\n  React.ComponentPropsWithoutRef<typeof Slider>,\n  \"value\" | \"onValueChange\" | \"onChange\"\n> & {\n  value: number | number[];\n  onChange: (value: number | number[]) => void;\n  onBlur?: () => void;\n  label?: string;\n  min?: number;\n  max?: number;\n  step?: number;\n  disabled?: boolean;\n  className?: string;\n  showValue?: boolean;\n  valueSuffix?: string;\n};\n\nexport function FormSlider(props: FormSliderProps) {\n  const [sliderValue, setSliderValue] = useState<number[]>([]);\n\n  const {\n    value,\n    onChange,\n    onBlur,\n    min = 0,\n    max = 100,\n    step = 1,\n    showValue = false,\n    valueSuffix = \"\",\n    label,\n    disabled,\n    className,\n    ...sliderProps\n  } = props;\n\n  // Keep the UI display in sync with the value\n  useEffect(() => {\n    if (Array.isArray(value)) {\n      setSliderValue(value);\n    } else if (typeof value === \"number\") {\n      setSliderValue([value]);\n    } else {\n      setSliderValue([min]);\n    }\n  }, [value, min]);\n\n  const handleValueChange = (newValue: number[]) => {\n    // If the original field expects an array, pass the array\n    // If it expects a single number, pass just the first value\n    if (Array.isArray(value)) {\n      onChange(newValue);\n    } else {\n      onChange(newValue[0]);\n    }\n  };\n\n  const getDisplayValue = () => {\n    if (sliderValue.length === 1) {\n      return `${sliderValue[0]}${valueSuffix}`;\n    }\n    return sliderValue.map((v) => `${v}${valueSuffix}`).join(\" - \");\n  };\n\n  return (\n    <div className={cn(\"space-y-2\", className)}>\n      <div className=\"flex items-center justify-between\">\n        {label && (\n          <label className=\"text-sm font-medium leading-none\">{label}</label>\n        )}\n        {showValue && (\n          <span className=\"text-sm text-muted-foreground\">\n            {getDisplayValue()}\n          </span>\n        )}\n      </div>\n      <Slider\n        min={min}\n        max={max}\n        step={step}\n        value={sliderValue}\n        onValueChange={handleValueChange}\n        onValueCommit={onBlur}\n        disabled={disabled}\n        {...sliderProps}\n      />\n    </div>\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form/slider.tsx"
+    }
+  ]
+}

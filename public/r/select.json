@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "select",
+  "type": "registry:component",
+  "description": "A select form field component.",
+  "files": [
+    {
+      "path": "app/components/form-fields/select.tsx",
+      "content": "import { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { PrimitiveValueType } from \"@/components/form/form-utils\";\nimport { FormSelect } from \"@/components/form/select\";\n\ntype SelectFieldProps<T extends PrimitiveValueType> = {\n  className?: string;\n  placeholder?: string;\n\n  /** Array of options with value and label */\n  options: Array<{\n    value: NoInfer<T>;\n    label: string;\n  }>;\n  clearLabel?: string;\n  clearable?: boolean;\n  disabled?: boolean;\n  field: { state: { value: T } };\n};\n\nexport function SelectField<T extends PrimitiveValueType>(\n  props: SelectFieldProps<T>,\n) {\n  const field = useFieldContext<T>();\n\n  return (\n    <FormSelect\n      value={field.state.value}\n      onValueChange={(value) => field.handleChange(value)}\n      className={props.className}\n      placeholder={props.placeholder}\n      options={props.options}\n      clearLabel={props.clearLabel}\n      clearable={props.clearable}\n      disabled={props.disabled}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/select.tsx"
+    }
+  ]
+}

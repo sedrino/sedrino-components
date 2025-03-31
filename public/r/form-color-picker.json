@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-color-picker",
+  "type": "registry:component",
+  "description": "A standalone color picker component.",
+  "files": [
+    {
+      "path": "app/components/form/color-picker.tsx",
+      "content": "import { HTMLAttributes, useEffect, useState } from \"react\";\nimport { cn } from \"@/lib/utils\";\n\nexport type FormColorPickerProps = HTMLAttributes<HTMLDivElement> & {\n  value: string;\n  onChange: (value: string) => void;\n  onBlur?: () => void;\n  id?: string;\n  label?: string;\n  disabled?: boolean;\n  className?: string;\n  defaultValue?: string;\n  showColorText?: boolean;\n};\n\nexport function FormColorPicker(props: FormColorPickerProps) {\n  const {\n    value,\n    onChange,\n    onBlur,\n    id,\n    label,\n    disabled,\n    className,\n    defaultValue,\n    showColorText,\n    ...restProps\n  } = props;\n  \n  const [color, setColor] = useState<string>(defaultValue || \"#000000\");\n\n  // Keep the UI display in sync with the value\n  useEffect(() => {\n    if (value) {\n      setColor(value);\n    }\n  }, [value]);\n\n  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {\n    const newColor = e.target.value;\n    setColor(newColor);\n    onChange(newColor);\n  };\n\n  return (\n    <div className={cn(\"space-y-2\", className)} {...restProps}>\n      {label && (\n        <label \n          htmlFor={id}\n          className=\"block text-sm font-medium\"\n        >\n          {label}\n        </label>\n      )}\n      <div className=\"flex items-center gap-3\">\n        <input\n          id={id}\n          type=\"color\"\n          value={color}\n          onChange={handleColorChange}\n          onBlur={onBlur}\n          disabled={disabled}\n          className=\"h-10 w-10 cursor-pointer rounded-md border border-input p-1\"\n        />\n        {showColorText && (\n          <div className=\"text-sm\">{color}</div>\n        )}\n      </div>\n    </div>\n  );\n}",
+      "type": "registry:component",
+      "target": "app/components/form/color-picker.tsx"
+    }
+  ]
+}

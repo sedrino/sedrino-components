@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-select",
+  "type": "registry:component",
+  "description": "A standalone select component.",
+  "files": [
+    {
+      "path": "app/components/form/select.tsx",
+      "content": "import { useMemo } from \"react\";\r\n\r\nimport {\r\n  Select,\r\n  SelectContent,\r\n  SelectItem,\r\n  SelectTrigger,\r\n  SelectValue,\r\n} from \"@/components/ui/select\";\r\n\r\nimport { createValueMapsFromOptions, PrimitiveValueType } from \"./form-utils\";\r\n\r\nexport type FormSelectProps<T extends PrimitiveValueType> = {\r\n  value: T;\r\n  onValueChange: (value: T) => void;\r\n  className?: string;\r\n  placeholder?: string;\r\n  /** Array of options with value and label */\r\n  options: Array<{\r\n    value: T;\r\n    label: string;\r\n  }>;\r\n  clearLabel?: string;\r\n  clearable?: boolean;\r\n  disabled?: boolean;\r\n};\r\n\r\nexport function FormSelect<T extends PrimitiveValueType>(\r\n  props: FormSelectProps<T>,\r\n) {\r\n  // Radix does not support empty string as a value so we are going to handle it.\r\n  // Map special values to string representations to ensure they work with Radix Select\r\n  const { valueToString, stringToValue } = useMemo(() => {\r\n    return createValueMapsFromOptions(props.options);\r\n  }, [props.options]);\r\n\r\n  return (\r\n    <Select\r\n      disabled={props.disabled}\r\n      value={valueToString.get(props.value)}\r\n      onValueChange={(val) =>\r\n        props.onValueChange(stringToValue.get(val) ?? (null as unknown as T))\r\n      }\r\n    >\r\n      <SelectTrigger className={props.className}>\r\n        <SelectValue placeholder={props.placeholder} />\r\n      </SelectTrigger>\r\n      <SelectContent>\r\n        {props.clearable && (\r\n          <SelectItem value=\"_clear\">{props.clearLabel ?? \"Clear\"}</SelectItem>\r\n        )}\r\n        {props.options.map((option) => (\r\n          <SelectItem\r\n            key={String(option.value)}\r\n            value={valueToString.get(option.value) ?? \"\"}\r\n          >\r\n            {option.label}\r\n          </SelectItem>\r\n        ))}\r\n      </SelectContent>\r\n    </Select>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "app/components/form/select.tsx"
+    }
+  ]
+}

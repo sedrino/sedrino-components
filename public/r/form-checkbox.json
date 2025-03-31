@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-checkbox",
+  "type": "registry:component",
+  "description": "A standalone checkbox component.",
+  "files": [
+    {
+      "path": "app/components/form/checkbox.tsx",
+      "content": "import { HTMLAttributes, useEffect, useState } from \"react\";\nimport { Checkbox } from \"@/components/ui/checkbox\";\nimport { cn } from \"@/lib/utils\";\n\nexport type FormCheckboxProps = HTMLAttributes<HTMLDivElement> & {\n  value: boolean;\n  onChange: (value: boolean) => void;\n  onBlur?: () => void;\n  id?: string;\n  label?: string;\n  disabled?: boolean;\n  className?: string;\n};\n\nexport function FormCheckbox(props: FormCheckboxProps) {\n  const { value, onChange, onBlur, id, label, disabled, className, ...restProps } = props;\n  const [checked, setChecked] = useState<boolean>(false);\n\n  // Keep the UI display in sync with the value\n  useEffect(() => {\n    setChecked(!!value);\n  }, [value]);\n\n  const handleCheckedChange = (checked: boolean) => {\n    onChange(checked);\n  };\n\n  return (\n    <div className={cn(\"flex items-center space-x-2\", className)} {...restProps}>\n      <Checkbox \n        id={id} \n        checked={checked}\n        onCheckedChange={handleCheckedChange}\n        disabled={disabled}\n        onBlur={onBlur}\n      />\n      {label && (\n        <label\n          htmlFor={id}\n          className=\"text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70\"\n        >\n          {label}\n        </label>\n      )}\n    </div>\n  );\n}",
+      "type": "registry:component",
+      "target": "app/components/form/checkbox.tsx"
+    }
+  ]
+}

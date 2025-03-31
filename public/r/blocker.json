@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blocker",
+  "type": "registry:component",
+  "description": "A form blocker component for handling unsaved changes.",
+  "files": [
+    {
+      "path": "app/components/form-fields/blocker.tsx",
+      "content": "import { Block } from \"@tanstack/react-router\";\r\n\r\n// TESTING\r\n\r\nimport { useFormContext } from \"@/components/form-fields/form-context\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport {\r\n  Dialog,\r\n  DialogContent,\r\n  DialogFooter,\r\n  DialogHeader,\r\n  DialogTitle,\r\n} from \"@/components/ui/dialog\";\r\n\r\nexport function Blocker() {\r\n  const form = useFormContext();\r\n  return (\r\n    <form.Subscribe\r\n      selector={(state) => ({\r\n        isDirty: state.isDirty,\r\n        isSubmitted: state.isSubmitted,\r\n      })}\r\n    >\r\n      {({ isDirty, isSubmitted }) => (\r\n        <>\r\n          <Block\r\n            shouldBlockFn={() => isDirty}\r\n            withResolver\r\n            enableBeforeUnload={false}\r\n          >\r\n            {({ status, proceed, reset }) => (\r\n              <>\r\n                {status === \"blocked\" && (\r\n                  <Dialog\r\n                    open={status === \"blocked\"}\r\n                    onOpenChange={() => reset()}\r\n                  >\r\n                    <DialogContent className=\"sm:max-w-[425px]\">\r\n                      <DialogHeader>\r\n                        <DialogTitle>Unsaved Changes</DialogTitle>\r\n                      </DialogHeader>\r\n                      <div className=\"py-4\">\r\n                        <p>\r\n                          Are you sure you want to leave? Your changes will be\r\n                          lost.\r\n                        </p>\r\n                      </div>\r\n                      <DialogFooter>\r\n                        <Button variant=\"outline\" onClick={reset}>\r\n                          No, stay\r\n                        </Button>\r\n                        <Button onClick={proceed}>Yes, leave</Button>\r\n                      </DialogFooter>\r\n                    </DialogContent>\r\n                  </Dialog>\r\n                )}\r\n              </>\r\n            )}\r\n          </Block>\r\n        </>\r\n      )}\r\n    </form.Subscribe>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/blocker.tsx"
+    }
+  ]
+}

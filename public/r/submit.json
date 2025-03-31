@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "submit",
+  "type": "registry:component",
+  "description": "A form submit button component.",
+  "files": [
+    {
+      "path": "app/components/form-fields/submit.tsx",
+      "content": "import React from \"react\";\r\nimport { Loader2 } from \"lucide-react\";\r\n\r\nimport { useFormContext } from \"@/components/form-fields/form-context\";\r\nimport { Button } from \"@/components/ui/button\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\ninterface SubmitButtonProps {\r\n  label?: string;\r\n  children?: React.ReactNode;\r\n  submittingLabel?: React.ReactNode;\r\n  className?: string;\r\n  asChild?: boolean;\r\n}\r\n\r\nexport function SubmitButton({\r\n  label,\r\n  children = \"Submit\",\r\n  submittingLabel,\r\n  className,\r\n  asChild,\r\n}: SubmitButtonProps) {\r\n  const form = useFormContext();\r\n\r\n  const defaultSubmittingLabel = (\r\n    <>\r\n      <Loader2 className=\"mr-2 h-4 w-4 animate-spin\" />\r\n      Submitting\r\n    </>\r\n  );\r\n\r\n  return (\r\n    <form.Subscribe\r\n      selector={(state) => ({\r\n        isSubmitting: state.isSubmitting,\r\n        canSubmit: state.canSubmit,\r\n      })}\r\n    >\r\n      {({ isSubmitting, canSubmit }) => (\r\n        <Button\r\n          type=\"submit\"\r\n          disabled={isSubmitting || !canSubmit}\r\n          className={cn(className)}\r\n          asChild={asChild}\r\n        >\r\n          {isSubmitting\r\n            ? submittingLabel || defaultSubmittingLabel\r\n            : children || label}\r\n        </Button>\r\n      )}\r\n    </form.Subscribe>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/submit.tsx"
+    }
+  ]
+}
