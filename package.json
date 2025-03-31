@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "sideEffects": false,
+  "packageManager": "pnpm@9.14.2",
   "scripts": {
     "dev": "vinxi dev --port 9173",
     "build": "vinxi build",
