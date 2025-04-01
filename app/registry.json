@@ -4,7 +4,7 @@
     "homepage": "https://registry.sedrino.com",
     "items": [
         {
-            "name": "use-app-form",
+            "name": "hooks-use-app-form",
             "type": "registry:hook",
             "description": "A Tanstack Form hook.",
             "files": [
@@ -13,10 +13,32 @@
                     "type": "registry:hook",
                     "target": "app/hooks/use-app-form.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-fields-blocker.json",
+                "https://registry.sedrino.com/r/form-fields-checkbox-group.json",
+                "https://registry.sedrino.com/r/form-fields-checkbox.json",
+                "https://registry.sedrino.com/r/form-fields-color-picker.json",
+                "https://registry.sedrino.com/r/form-fields-currency-field.json",
+                "https://registry.sedrino.com/r/form-fields-date-field.json",
+                "https://registry.sedrino.com/r/form-fields-date-time-field.json",
+                "https://registry.sedrino.com/r/form-fields-dev-helper.json",
+                "https://registry.sedrino.com/r/form-fields-form-context.json",
+                "https://registry.sedrino.com/r/form-fields-radio-group.json",
+                "https://registry.sedrino.com/r/form-fields-select.json",
+                "https://registry.sedrino.com/r/form-fields-show-if.json",
+                "https://registry.sedrino.com/r/form-fields-slider.json",
+                "https://registry.sedrino.com/r/form-fields-submit.json",
+                "https://registry.sedrino.com/r/form-fields-switch.json",
+                "https://registry.sedrino.com/r/form-fields-text-area.json",
+                "https://registry.sedrino.com/r/form-fields-text-field.json",
+                "https://registry.sedrino.com/r/form-fields-time-field.json",
+                "https://registry.sedrino.com/r/form-fields-unsaved-changes.json",
+                "https://registry.sedrino.com/r/form-fields-validation-error.json"
             ]
         },
         {
-            "name": "blocker",
+            "name": "form-fields-blocker",
             "type": "registry:component",
             "description": "A form blocker component for handling unsaved changes.",
             "files": [
@@ -28,7 +50,7 @@
             ]
         },
         {
-            "name": "checkbox-group",
+            "name": "form-fields-checkbox-group",
             "type": "registry:component",
             "description": "A checkbox group form field component.",
             "files": [
@@ -37,10 +59,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/checkbox-group.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-checkbox-group.json"
             ]
         },
         {
-            "name": "checkbox",
+            "name": "form-fields-checkbox",
             "type": "registry:component",
             "description": "A checkbox form field component.",
             "files": [
@@ -49,10 +74,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/checkbox.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-checkbox.json"
             ]
         },
         {
-            "name": "color-picker",
+            "name": "form-fields-color-picker",
             "type": "registry:component",
             "description": "A color picker form field component.",
             "files": [
@@ -61,10 +89,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/color-picker.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-color-picker.json"
             ]
         },
         {
-            "name": "currency-field",
+            "name": "form-fields-currency-field",
             "type": "registry:component",
             "description": "A currency input form field component.",
             "files": [
@@ -73,10 +104,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/currency-field.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-currency-field.json"
             ]
         },
         {
-            "name": "date-field",
+            "name": "form-fields-date-field",
             "type": "registry:component",
             "description": "A date picker form field component.",
             "files": [
@@ -85,10 +119,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/date-field.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-date-field.json"
             ]
         },
         {
-            "name": "date-time-field",
+            "name": "form-fields-date-time-field",
             "type": "registry:component",
             "description": "A date and time picker form field component.",
             "files": [
@@ -97,10 +134,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/date-time-field.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-date-time-field.json"
             ]
         },
         {
-            "name": "dev-helper",
+            "name": "form-fields-dev-helper",
             "type": "registry:component",
             "description": "A development helper component for forms.",
             "files": [
@@ -112,7 +152,7 @@
             ]
         },
         {
-            "name": "form-context",
+            "name": "form-fields-form-context",
             "type": "registry:component",
             "description": "Form context provider for form fields.",
             "files": [
@@ -124,7 +164,7 @@
             ]
         },
         {
-            "name": "radio-group",
+            "name": "form-fields-radio-group",
             "type": "registry:component",
             "description": "A radio group form field component.",
             "files": [
@@ -133,10 +173,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/radio-group.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-radio-group.json"
             ]
         },
         {
-            "name": "select",
+            "name": "form-fields-select",
             "type": "registry:component",
             "description": "A select form field component.",
             "files": [
@@ -145,10 +188,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/select.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-select.json"
             ]
         },
         {
-            "name": "show-if",
+            "name": "form-fields-show-if",
             "type": "registry:component",
             "description": "A conditional rendering component for forms.",
             "files": [
@@ -160,7 +206,7 @@
             ]
         },
         {
-            "name": "slider",
+            "name": "form-fields-slider",
             "type": "registry:component",
             "description": "A slider form field component.",
             "files": [
@@ -169,10 +215,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/slider.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-slider.json"
             ]
         },
         {
-            "name": "submit",
+            "name": "form-fields-submit",
             "type": "registry:component",
             "description": "A form submit button component.",
             "files": [
@@ -184,7 +233,7 @@
             ]
         },
         {
-            "name": "switch",
+            "name": "form-fields-switch",
             "type": "registry:component",
             "description": "A switch form field component.",
             "files": [
@@ -193,10 +242,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/switch.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-switch.json"
             ]
         },
         {
-            "name": "text-area",
+            "name": "form-fields-text-area",
             "type": "registry:component",
             "description": "A text area form field component.",
             "files": [
@@ -205,10 +257,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/text-area.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-text-area.json"
             ]
         },
         {
-            "name": "text-field",
+            "name": "form-fields-text-field",
             "type": "registry:component",
             "description": "A text input form field component.",
             "files": [
@@ -217,10 +272,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/text-field.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-text-field.json"
             ]
         },
         {
-            "name": "time-field",
+            "name": "form-fields-time-field",
             "type": "registry:component",
             "description": "A time picker form field component.",
             "files": [
@@ -229,10 +287,13 @@
                     "type": "registry:component",
                     "target": "app/components/form-fields/time-field.tsx"
                 }
+            ],
+            "registryDependencies": [
+                "https://registry.sedrino.com/r/form-time-field.json"
             ]
         },
         {
-            "name": "unsaved-changes",
+            "name": "form-fields-unsaved-changes",
             "type": "registry:component",
             "description": "An indicator for unsaved form changes.",
             "files": [
@@ -244,7 +305,7 @@
             ]
         },
         {
-            "name": "validation-error",
+            "name": "form-fields-validation-error",
             "type": "registry:component",
             "description": "A form field validation error component.",
             "files": [

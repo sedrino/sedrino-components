@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-checkbox",
+  "type": "registry:component",
+  "description": "A checkbox form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-checkbox.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/checkbox.tsx",
+      "content": "import { HTMLAttributes } from \"react\";\n\nimport { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { FormCheckbox } from \"@/components/form/checkbox\";\n\ntype CheckboxFieldProps = HTMLAttributes<HTMLDivElement> & {\n  id?: string;\n  label?: string;\n  disabled?: boolean;\n  className?: string;\n  field: { state: { value: boolean } };\n};\n\nexport function CheckboxField(props: CheckboxFieldProps) {\n  const field = useFieldContext<boolean>();\n  const id = props.id ?? `${field.name}`;\n\n  return (\n    <FormCheckbox\n      id={id}\n      value={!!field.state.value}\n      onChange={(value) => field.handleChange(value)}\n      onBlur={field.handleBlur}\n      label={props.label}\n      disabled={props.disabled}\n      className={props.className}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/checkbox.tsx"
+    }
+  ]
+}

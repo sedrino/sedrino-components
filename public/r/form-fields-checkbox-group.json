@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-checkbox-group",
+  "type": "registry:component",
+  "description": "A checkbox group form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-checkbox-group.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/checkbox-group.tsx",
+      "content": "import { HTMLAttributes } from \"react\";\n\nimport { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { FormCheckboxGroup, Option } from \"@/components/form/checkbox-group\";\nimport { PrimitiveValueType } from \"@/components/form/form-utils\";\n\ntype CheckboxGroupFieldProps<T extends PrimitiveValueType> =\n  HTMLAttributes<HTMLDivElement> & {\n    options: Option<T>[];\n    label?: string;\n    className?: string;\n    disabled?: boolean;\n    orientation?: \"horizontal\" | \"vertical\";\n    field: { state: { value: T[] } };\n  };\n\nexport function CheckboxGroupField<T extends PrimitiveValueType>(\n  props: CheckboxGroupFieldProps<T>,\n) {\n  const field = useFieldContext<T[]>();\n\n  return (\n    <FormCheckboxGroup\n      value={field.state.value || []}\n      onChange={(value) => field.handleChange(value as T[])}\n      onBlur={field.handleBlur}\n      options={props.options}\n      label={props.label}\n      className={props.className}\n      disabled={props.disabled}\n      orientation={props.orientation}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/checkbox-group.tsx"
+    }
+  ]
+}

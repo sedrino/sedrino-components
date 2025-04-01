@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-currency-field",
+  "type": "registry:component",
+  "description": "A currency input form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-currency-field.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/currency-field.tsx",
+      "content": "import type { CurrencyInputProps } from \"react-currency-input-field\";\n\nimport { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { FormCurrencyField } from \"@/components/form/currency-field\";\n\ntype CurrencyFieldProps = Omit<\n  CurrencyInputProps,\n  \"value\" | \"onValueChange\"\n> & {\n  label?: string;\n  id?: string;\n  className?: string;\n  currency?: string;\n  locale?: string;\n  allowNegative?: boolean;\n  placeholder?: string;\n  disabled?: boolean;\n  field: { state: { value: number | string | null } };\n};\n\nexport function CurrencyField(props: CurrencyFieldProps) {\n  const field = useFieldContext<number | string | null>();\n  const id = props.id ?? `${field.name}`;\n\n  return (\n    <FormCurrencyField\n      id={id}\n      value={field.state.value}\n      onChange={(value) => field.handleChange(value)}\n      onBlur={field.handleBlur}\n      currency={props.currency}\n      locale={props.locale}\n      allowNegative={props.allowNegative}\n      placeholder={props.placeholder}\n      disabled={props.disabled}\n      className={props.className}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/currency-field.tsx"
+    }
+  ]
+}

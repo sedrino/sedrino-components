@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-text-field",
+  "type": "registry:component",
+  "description": "A text input form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-text-field.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/text-field.tsx",
+      "content": "import { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { FormTextField } from \"@/components/form/text-field\";\n\ntype TextFieldBaseProps<T> = React.InputHTMLAttributes<HTMLInputElement> & {\n  className?: string;\n  id?: string;\n  disabled?: boolean;\n  autoFocus?: boolean;\n  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;\n  mask?: string; // Optional mask pattern (e.g., \"___-___-___\")\n  maskChar?: string; // Optional mask character (default: \"_\")\n  field: { state: { value: T } };\n};\n\ntype StandardTextFieldProps = TextFieldBaseProps<string> & {\n  type?: \"text\" | \"email\" | \"password\" | \"tel\" | \"url\" | \"search\";\n};\n\ntype NumberTextFieldProps = TextFieldBaseProps<number> & {\n  type: \"number\";\n};\n\ntype TextNumberFieldProps = TextFieldBaseProps<number | null> & {\n  type: \"text-number\";\n};\n\ntype TextFieldProps =\n  | StandardTextFieldProps\n  | NumberTextFieldProps\n  | TextNumberFieldProps;\n\nexport function TextField(props: TextFieldProps) {\n  const field = useFieldContext<string | number | null>();\n  const id = props.id ?? `${field.name}`;\n\n  return (\n    <FormTextField\n      id={id}\n      value={field.state.value}\n      onChange={(value) => field.handleChange(value)}\n      onBlur={field.handleBlur}\n      disabled={props.disabled}\n      autoFocus={props.autoFocus}\n      type={props.type as any}\n      mask={props.mask}\n      maskChar={props.maskChar}\n      onKeyDown={props.onKeyDown}\n      className={props.className}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/text-field.tsx"
+    }
+  ]
+}

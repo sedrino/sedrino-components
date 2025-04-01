@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-show-if",
+  "type": "registry:component",
+  "description": "A conditional rendering component for forms.",
+  "files": [
+    {
+      "path": "app/components/form-fields/show-if.tsx",
+      "content": "import { useEffect, useRef } from \"react\";\r\n\r\nimport { useFormContext } from \"@/components/form-fields/form-context\";\r\n\r\nexport function ShowIf<T, TSelected>({\r\n  children,\r\n  selector,\r\n  when,\r\n  onShow,\r\n  onHide,\r\n}: {\r\n  children: React.ReactNode;\r\n  selector: (state: T) => TSelected;\r\n  when: (state: TSelected) => boolean;\r\n  form?: { state: T };\r\n  onShow?: () => void;\r\n  onHide?: () => void;\r\n}) {\r\n  const form = useFormContext();\r\n  const prevShownRef = useRef<boolean | null>(null);\r\n\r\n  return (\r\n    <form.Subscribe selector={selector}>\r\n      {(value) => {\r\n        const shouldShow = when(value);\r\n\r\n        // Using useEffect inside the render function to handle the callbacks\r\n        useEffect(() => {\r\n          // Only trigger callbacks after initial render and when state changes\r\n          if (\r\n            prevShownRef.current !== null &&\r\n            prevShownRef.current !== shouldShow\r\n          ) {\r\n            if (shouldShow && onShow) {\r\n              onShow();\r\n            } else if (!shouldShow && onHide) {\r\n              onHide();\r\n            }\r\n          }\r\n          prevShownRef.current = shouldShow;\r\n        }, [shouldShow]);\r\n\r\n        return shouldShow ? children : null;\r\n      }}\r\n    </form.Subscribe>\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/show-if.tsx"
+    }
+  ]
+}

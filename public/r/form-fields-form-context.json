@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-form-context",
+  "type": "registry:component",
+  "description": "Form context provider for form fields.",
+  "files": [
+    {
+      "path": "app/components/form-fields/form-context.ts",
+      "content": "import { createFormHookContexts } from \"@tanstack/react-form\";\n\nexport const { fieldContext, useFieldContext, formContext, useFormContext } =\n  createFormHookContexts();\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/form-context.ts"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-slider",
+  "type": "registry:component",
+  "description": "A slider form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-slider.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/slider.tsx",
+      "content": "import { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { FormSlider } from \"@/components/form/slider\";\n\ntype SliderFieldProps<T extends number | number[]> = Omit<\n  React.ComponentPropsWithoutRef<typeof FormSlider>,\n  \"value\" | \"onChange\"\n> & {\n  label?: string;\n  min?: number;\n  max?: number;\n  step?: number;\n  disabled?: boolean;\n  className?: string;\n  showValue?: boolean;\n  valueSuffix?: string;\n  field: { state: { value: T } };\n};\n\nexport function SliderField<T extends number | number[]>(\n  props: SliderFieldProps<T>,\n) {\n  const field = useFieldContext<number | number[]>();\n\n  return (\n    <FormSlider\n      value={field.state.value}\n      onChange={(value: number | number[]) => field.handleChange(value)}\n      onBlur={field.handleBlur}\n      min={props.min}\n      max={props.max}\n      step={props.step}\n      label={props.label}\n      disabled={props.disabled}\n      className={props.className}\n      showValue={props.showValue}\n      valueSuffix={props.valueSuffix}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/slider.tsx"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-text-area",
+  "type": "registry:component",
+  "description": "A text area form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-text-area.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/text-area.tsx",
+      "content": "import { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { FormTextArea } from \"@/components/form/text-area\";\n\ntype TextAreaFieldProps = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {\n  className?: string;\n  id?: string;\n  disabled?: boolean;\n  autoFocus?: boolean;\n  rows?: number;\n  placeholder?: string;\n  onKeyDown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void;\n  field: { state: { value?: string | null } };\n};\n\nexport function TextAreaField(props: TextAreaFieldProps) {\n  const field = useFieldContext<string>();\n  const id = props.id ?? `${field.name}`;\n\n  return (\n    <FormTextArea\n      id={id}\n      value={field.state.value || \"\"}\n      onChange={(value) => field.handleChange(value)}\n      onBlur={field.handleBlur}\n      disabled={props.disabled}\n      autoFocus={props.autoFocus}\n      rows={props.rows}\n      placeholder={props.placeholder}\n      onKeyDown={props.onKeyDown}\n      className={props.className}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/text-area.tsx"
+    }
+  ]
+}

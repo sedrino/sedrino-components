@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-unsaved-changes",
+  "type": "registry:component",
+  "description": "An indicator for unsaved form changes.",
+  "files": [
+    {
+      "path": "app/components/form-fields/unsaved-changes.tsx",
+      "content": "import { useFormContext } from \"@/components/form-fields/form-context\";\r\nimport { cn } from \"@/lib/utils\";\r\n\r\nexport function UnsavedChangesIndicator(props: { className?: string }) {\r\n  const form = useFormContext();\r\n  return (\r\n    <form.Subscribe\r\n      selector={(state) => state.isDirty}\r\n      children={(isDirty) =>\r\n        isDirty ? (\r\n          <span\r\n            className={cn(\r\n              \"inline-flex items-center justify-center text-sm font-medium text-amber-600\",\r\n              props.className,\r\n            )}\r\n          >\r\n            Unsaved Changes\r\n          </span>\r\n        ) : null\r\n      }\r\n    />\r\n  );\r\n}\r\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/unsaved-changes.tsx"
+    }
+  ]
+}

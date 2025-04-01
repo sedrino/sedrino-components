@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hooks-use-app-form",
+  "type": "registry:hook",
+  "description": "A Tanstack Form hook.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-fields-blocker.json",
+    "https://registry.sedrino.com/r/form-fields-checkbox-group.json",
+    "https://registry.sedrino.com/r/form-fields-checkbox.json",
+    "https://registry.sedrino.com/r/form-fields-color-picker.json",
+    "https://registry.sedrino.com/r/form-fields-currency-field.json",
+    "https://registry.sedrino.com/r/form-fields-date-field.json",
+    "https://registry.sedrino.com/r/form-fields-date-time-field.json",
+    "https://registry.sedrino.com/r/form-fields-dev-helper.json",
+    "https://registry.sedrino.com/r/form-fields-form-context.json",
+    "https://registry.sedrino.com/r/form-fields-radio-group.json",
+    "https://registry.sedrino.com/r/form-fields-select.json",
+    "https://registry.sedrino.com/r/form-fields-show-if.json",
+    "https://registry.sedrino.com/r/form-fields-slider.json",
+    "https://registry.sedrino.com/r/form-fields-submit.json",
+    "https://registry.sedrino.com/r/form-fields-switch.json",
+    "https://registry.sedrino.com/r/form-fields-text-area.json",
+    "https://registry.sedrino.com/r/form-fields-text-field.json",
+    "https://registry.sedrino.com/r/form-fields-time-field.json",
+    "https://registry.sedrino.com/r/form-fields-unsaved-changes.json",
+    "https://registry.sedrino.com/r/form-fields-validation-error.json"
+  ],
+  "files": [
+    {
+      "path": "app/hooks/use-app-form.tsx",
+      "content": "import { createFormHook } from \"@tanstack/react-form\";\n\n// THIS IS A TEST\n\nimport { Blocker } from \"@/components/form-fields/blocker\";\n// Import form field components\nimport { CheckboxField } from \"@/components/form-fields/checkbox\";\nimport { CheckboxGroupField } from \"@/components/form-fields/checkbox-group\";\nimport { ColorPickerField } from \"@/components/form-fields/color-picker\";\nimport { CurrencyField } from \"@/components/form-fields/currency-field\";\nimport { DateField } from \"@/components/form-fields/date-field\";\nimport { DateTimeField } from \"@/components/form-fields/date-time-field\";\nimport { DevHelper } from \"@/components/form-fields/dev-helper\";\nimport {\n  fieldContext,\n  formContext,\n} from \"@/components/form-fields/form-context\";\nimport {\n  RadioGroupField,\n  RadioGroupItemField,\n} from \"@/components/form-fields/radio-group\";\nimport { SelectField } from \"@/components/form-fields/select\";\nimport { ShowIf } from \"@/components/form-fields/show-if\";\nimport { SliderField } from \"@/components/form-fields/slider\";\nimport { SubmitButton } from \"@/components/form-fields/submit\";\nimport { SwitchField } from \"@/components/form-fields/switch\";\nimport { TextAreaField } from \"@/components/form-fields/text-area\";\nimport { TextField } from \"@/components/form-fields/text-field\";\nimport { TimeField } from \"@/components/form-fields/time-field\";\nimport { UnsavedChangesIndicator } from \"@/components/form-fields/unsaved-changes\";\nimport { ValidationError } from \"@/components/form-fields/validation-error\";\n\n// Form components that pre-bind events from the form hook; check our \"Form Composition\" guide for more\n// We also support Valibot, ArkType, and any other standard schema library\n\n// Allow us to bind components to the form to keep type safety but reduce production boilerplate\n// Define this once to have a generator of consistent form instances throughout your app\nexport const { useAppForm, withForm } = createFormHook({\n  fieldComponents: {\n    TextField,\n    SelectField,\n    ValidationError,\n    RadioGroupField,\n    RadioGroupItemField,\n    TextAreaField,\n    CheckboxField,\n    CheckboxGroupField,\n    SwitchField,\n    SliderField,\n    ColorPickerField,\n    CurrencyField,\n    DateField,\n    DateTimeField,\n    TimeField,\n  },\n  formComponents: {\n    ShowIf,\n    DevHelper,\n    Blocker,\n    SubmitButton,\n    UnsavedChangesIndicator,\n  },\n  fieldContext,\n  formContext,\n});\n",
+      "type": "registry:hook",
+      "target": "app/hooks/use-app-form.tsx"
+    }
+  ]
+}

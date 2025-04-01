@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-radio-group",
+  "type": "registry:component",
+  "description": "A radio group form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-radio-group.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/radio-group.tsx",
+      "content": "import { useFieldContext } from \"@/components/form-fields/form-context\";\nimport {\n  PrimitiveValueType,\n  valueToString,\n} from \"@/components/form/form-utils\";\nimport {\n  FormRadioGroup,\n  FormRadioGroupItem,\n} from \"@/components/form/radio-group\";\n\ntype RadioGroupFieldProps<TValue extends PrimitiveValueType> = {\n  className?: string;\n  defaultValue?: TValue;\n  field: { state: { value: TValue } };\n} & React.PropsWithChildren<{}>;\n\nexport function RadioGroupField<TValue extends PrimitiveValueType>(\n  props: RadioGroupFieldProps<TValue>,\n) {\n  const field = useFieldContext<TValue>();\n\n  return (\n    <FormRadioGroup\n      value={field.state.value}\n      onChange={(value) => field.handleChange(value)}\n      className={props.className}\n      defaultValue={props.defaultValue}\n    >\n      {props.children}\n    </FormRadioGroup>\n  );\n}\n\ntype RadioGroupItemFieldProps<TValue extends PrimitiveValueType> = {\n  /**\n   * The value of this radio button.\n   */\n  value: NoInfer<TValue>;\n  label: string;\n  className?: string;\n  field: { state: { value: TValue } };\n};\n\nexport function RadioGroupItemField<TValue extends PrimitiveValueType>(\n  props: RadioGroupItemFieldProps<TValue>,\n) {\n  const field = useFieldContext<TValue>();\n\n  return (\n    <FormRadioGroupItem\n      value={props.value}\n      label={props.label}\n      className={props.className}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/radio-group.tsx"
+    }
+  ]
+}

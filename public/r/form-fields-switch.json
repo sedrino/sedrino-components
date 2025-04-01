@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form-fields-switch",
+  "type": "registry:component",
+  "description": "A switch form field component.",
+  "registryDependencies": [
+    "https://registry.sedrino.com/r/form-switch.json"
+  ],
+  "files": [
+    {
+      "path": "app/components/form-fields/switch.tsx",
+      "content": "import { HTMLAttributes } from \"react\";\n\nimport { useFieldContext } from \"@/components/form-fields/form-context\";\nimport { PrimitiveValueType } from \"@/components/form/form-utils\";\nimport { FormSwitch } from \"@/components/form/switch\";\n\ntype SwitchFieldProps<\n  TOnValue extends PrimitiveValueType = true,\n  TOffValue extends PrimitiveValueType = false,\n> = HTMLAttributes<HTMLDivElement> & {\n  id?: string;\n  label?: string;\n  disabled?: boolean;\n  className?: string;\n  onValue?: TOnValue;\n  offValue?: TOffValue;\n  checked?: boolean;\n  onCheckedChange?: (checked: boolean) => void;\n  field: { state: { value: TOnValue | TOffValue } };\n};\n\nexport function SwitchField<\n  TOnValue extends PrimitiveValueType = true,\n  TOffValue extends PrimitiveValueType = false,\n>(props: SwitchFieldProps<TOnValue, TOffValue>) {\n  const field = useFieldContext<TOnValue | TOffValue>();\n  const id = props.id ?? `${field.name}`;\n\n  return (\n    <FormSwitch\n      id={id}\n      value={field.state.value}\n      onChange={(value) => field.handleChange(value as TOnValue | TOffValue)}\n      onBlur={field.handleBlur}\n      label={props.label}\n      disabled={props.disabled}\n      className={props.className}\n      onValue={props.onValue}\n      offValue={props.offValue}\n      checked={props.checked}\n      onCheckedChange={props.onCheckedChange}\n    />\n  );\n}\n",
+      "type": "registry:component",
+      "target": "app/components/form-fields/switch.tsx"
+    }
+  ]
+}
